@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import styles from "./styles.module.css";
 
 const Signup = () => {
+  let navigate = useNavigate();
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -20,9 +22,22 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/api/users";
-      const { data: res } = await axios.post(url, data);
+      const { firstName, lastName, password, email } = data;
+      const userDetails = {
+        name: firstName + lastName,
+        email: email,
+        password: password,
+      };
+      console.log(userDetails);
+      const url = "http://localhost:500/api/users";
+      const { data: res } = await axios.post(url, userDetails);
       setMsg(res.message);
+      if (res.message === "User created") {
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      }
+      setError();
     } catch (error) {
       if (
         error.response &&
@@ -30,6 +45,7 @@ const Signup = () => {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
+        setMsg();
       }
     }
   };

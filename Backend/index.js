@@ -2,14 +2,22 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const connection = require("./db");
+const mongoose = require("mongoose");
 const userRoutes = require("./models/routes/users");
-connection();
+
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
+const connectionParams = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server started on ${port}`));
+app.use("/api/users", userRoutes);
+// app.use("/api/auth", authRoutes);
+mongoose.connect(process.env.DB, connectionParams).then(() => {
+  console.log("Database connected successfully!!!😀");
+  app.listen(process.env.PORT, () =>
+    console.log(`Server started on ${process.env.PORT}`)
+  );
+});
