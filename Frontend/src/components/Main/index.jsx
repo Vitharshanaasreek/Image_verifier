@@ -24,7 +24,7 @@ const Main = () => {
       <nav className={styles.navbar}>
         <h1>Image Verifier</h1>
         <button className={styles.white_btn} onClick={handleLogout}>
-          Logout
+          Login
         </button>
       </nav>
       <div className={styles.imgupload_Container}>
