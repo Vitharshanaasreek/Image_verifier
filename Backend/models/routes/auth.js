@@ -22,11 +22,16 @@ router.post("/", async (req, res) => {
 
     if (!validPassword)
       return res.status(401).send({ message: "Invalid email or password" });
-
-    var token = jwt.sign({ user: req.body.email }, process.env.JWTPRIVATEKEY, {
-      expiresIn: "15m",
-    });
-
+    const updateToken = await userModel.findOne({ email: req.body.email });
+    var token = jwt.sign(
+      { user: req.body.email, id: updateToken?._id },
+      process.env.JWTPRIVATEKEY,
+      {
+        expiresIn: "15m",
+      }
+    );
+    updateToken.token = token;
+    await updateToken.save();
     res.status(200).send({ token: token, message: "Logged in successfully" });
   } catch (err) {
     res.status(500).send({ message: "Internal server error" });

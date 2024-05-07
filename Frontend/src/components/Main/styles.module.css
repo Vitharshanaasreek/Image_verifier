@@ -75,3 +75,48 @@
   width: 400px;
   margin-left: 15px;
 }
+
+
+/* styles.module.css */
+.hash_values_container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+.hash_values_list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hash_value_item {
+  margin-bottom: 10px;
+}
+
+.hash_label {
+  font-weight: bold;
+}
+
+
+/* styles.module.css */
+
+.verify_btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.verify_btn:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.verify_btn:disabled {
+  background-color: #6c757d; /* Gray color for disabled state */
+  cursor: not-allowed;
+}
