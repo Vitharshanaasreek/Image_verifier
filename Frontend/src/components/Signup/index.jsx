@@ -29,7 +29,7 @@ const Signup = () => {
         password: password,
       };
       console.log(userDetails);
-      const url = "http://localhost:500/api/users";
+      const url = "https://image-verifier.onrender.com/api/users";
       const { data: res } = await axios.post(url, userDetails);
       setMsg(res.message);
       if (res.message === "User created") {

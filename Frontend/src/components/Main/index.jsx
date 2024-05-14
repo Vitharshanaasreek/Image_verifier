@@ -35,7 +35,7 @@ const Main = () => {
   };
 
   const handleSubmit = async () => {
-    const url = "http://localhost:500/api/upload";
+    const url = "https://image-verifier.onrender.com/api/upload";
     const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const Main = () => {
   };
 
   const handleVerify = async () => {
-    const url = "http://localhost:500/api/verify";
+    const url = "https://image-verifier.onrender.com/api/verify";
     const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
