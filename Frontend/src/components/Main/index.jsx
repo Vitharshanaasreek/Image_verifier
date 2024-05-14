@@ -14,7 +14,7 @@ const Main = () => {
   const inputRef = useRef(null);
   const [img, setImg] = useState(null);
   const [hash, setHash] = useState(null);
-  const [verified, setVerified] = useState(false); // State to track verification status
+  
 
   const handleImgclick = () => {
     inputRef.current.click();
@@ -67,7 +67,7 @@ const Main = () => {
       Authorization: `Bearer ${token}`,
     };
 
-    const res = await axios.post(url, { hash: hash }, { headers });
+    await axios.post(url, { hash: hash }, { headers });
 
     // toast.success("Image verified successfully!", {
     //   position: "top-right",
