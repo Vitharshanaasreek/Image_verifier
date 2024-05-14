@@ -55,7 +55,7 @@ const Main = () => {
       });
       setImg(null);
       setHash(null);
-      setVerified(true); // Image is verified after successful upload
+       
     }
     console.log("res", res);
   };
