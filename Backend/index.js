@@ -3,9 +3,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const userRoutes = require("./models/routes/users");
-const loginRoutes = require("./models/routes/auth");
-const upload = require("./models/routes/hash");
+const userRoutes = require("./routes/users");
+const loginRoutes = require("./routes/auth");
+const upload = require("./routes/hash");
+const otpverify = require("./routes/otpVerify");
 
 app.use(cors());
 app.use(express.json());
@@ -14,7 +15,7 @@ const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-
+app.use("/api/verify", otpverify);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", loginRoutes);
 app.use("/api", upload);

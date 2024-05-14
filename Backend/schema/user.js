@@ -16,6 +16,7 @@ const validate = (data) => {
     name: Joi.string().required().label("Name"),
     email: Joi.string().email().required().label("Email Id"),
     password: passwordComplexity().required().label("Password"),
+    otp: Joi.string().length(4).pattern(/^\d+$/).required().label("OTP"),
   });
   return schema.validate(data);
 };
